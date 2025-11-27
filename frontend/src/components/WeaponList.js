@@ -4,31 +4,30 @@ import { fetchWeapons, updateWeapon, deleteWeapon } from "../api";
 export default function WeaponList() {
 
   // Stan komponentu
-  const [weapons, setWeapons] = useState([]);       // Przechowywanie listy broni
-  const [editId, setEditId] = useState(null);       // Przechowywanie ID broni w edycji
-  const [editForm, setEditForm] = useState({});     // Przechowywanie danych edytowanej broni
-  const [sortKey, setSortKey] = useState("name");   // Przechowywanie po czym sortowanie
-  const [sortAsc, setSortAsc] = useState(true);     // Przechowywanie kierunku sortowania
+  const [weapons, setWeapons] = useState([]);
+  const [editId, setEditId] = useState(null);
+  const [editForm, setEditForm] = useState({});
+
+  const [sortKey, setSortKey] = useState("name");
+  const [sortAsc, setSortAsc] = useState(true);
 
   // Filtry
-  const [filterCategory, setFilterCategory] = useState("");  // Przechowywanie filtra po kategorii
-  const [filterCaliber, setFilterCaliber] = useState("");    // Przechowywanie filtra po kalibrze
+  const [filterCategory, setFilterCategory] = useState("");
+  const [filterCaliber, setFilterCaliber] = useState("");
+  const [filterName, setFilterName] = useState("");   // NOWOŚĆ: filtr po nazwie
 
-  // Załadowanie danych przy uruchomieniu komponentu
+  // Ładowanie danych
   useEffect(() => { loadWeapons(); }, []);
 
-  // Funkcja: pobranie broni z API
   async function loadWeapons() {
     const data = await fetchWeapons();
     setWeapons(data || []);
   }
 
-  // Funkcja: obsługa zmiany pola w edycji
   function onEditChange(e, field) {
     setEditForm({ ...editForm, [field]: e.target.value });
   }
 
-  // Funkcja: zapisanie zmian edycji
   async function saveEdit(id) {
     await updateWeapon(id, editForm);
     setEditId(null);
@@ -36,7 +35,6 @@ export default function WeaponList() {
     loadWeapons();
   }
 
-  // Funkcja: usunięcie broni
   async function removeWeapon(id) {
     if (window.confirm("Na pewno chcesz usunąć tę broń?")) {
       await deleteWeapon(id);
@@ -44,14 +42,15 @@ export default function WeaponList() {
     }
   }
 
-  // Filtrowanie broni
+  // Filtrowanie
   const filteredWeapons = weapons.filter(w => {
+    const nameMatch = w.name.toLowerCase().includes(filterName.toLowerCase());               // NOWOŚĆ
     const categoryMatch = w.category.toLowerCase().includes(filterCategory.toLowerCase());
     const caliberMatch = w.caliber.toLowerCase().includes(filterCaliber.toLowerCase());
-    return categoryMatch && caliberMatch;
+    return nameMatch && categoryMatch && caliberMatch;
   });
 
-  // Sortowanie broni
+  // Sortowanie
   const sortedWeapons = [...filteredWeapons].sort((a, b) => {
     if (!a[sortKey]) return 1;
     if (!b[sortKey]) return -1;
@@ -60,7 +59,6 @@ export default function WeaponList() {
     return 0;
   });
 
-  // Funkcja: generowanie nagłówka z sortowaniem
   function renderHeader(label, key) {
     const isActive = sortKey === key;
     const arrow = isActive ? (sortAsc ? "⬆️" : "⬇️") : "";
@@ -85,15 +83,21 @@ export default function WeaponList() {
     <div>
       <h2>Lista broni</h2>
 
-      {/* Filtry broni */}
+      {/* Filtry */}
       <div style={{ marginBottom: "15px" }}>
+        <input
+          placeholder="Nazwa (np. M1)"
+          value={filterName}
+          onChange={e => setFilterName(e.target.value)}
+        />
         <input
           placeholder="Rodzaj (np. Karabin)"
           value={filterCategory}
           onChange={e => setFilterCategory(e.target.value)}
+          style={{ marginLeft: "10px" }}
         />
         <input
-          placeholder="Kaliber (np. 7,62)"
+          placeholder="Kaliber (np. 7.62)"
           value={filterCaliber}
           onChange={e => setFilterCaliber(e.target.value)}
           style={{ marginLeft: "10px" }}
@@ -102,7 +106,6 @@ export default function WeaponList() {
 
       {weapons.length === 0 ? <p>Brak wpisów.</p> : (
         <ul className="weapon-list">
-          {/* Nagłówek tabeli */}
           <li className="weapon-item">
             {renderHeader(<strong>&nbsp;Nazwa</strong>, "name")}|
             {renderHeader(<strong>&nbsp;Kategoria</strong>, "category")}|
@@ -112,7 +115,6 @@ export default function WeaponList() {
             <strong>&nbsp;Akcje</strong>
           </li>
 
-          {/* Lista broni */}
           {sortedWeapons.map(w => (
             <li key={w.id} className="weapon-item">
               {editId === w.id ? (
