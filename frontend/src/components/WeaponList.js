@@ -3,6 +3,14 @@ import { fetchWeapons, updateWeapon, deleteWeapon } from "../api";
 
 export default function WeaponList() {
 
+  // Obsługa ciemnej wersji strony
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    document.body.className = dark ? "dark-mode" : "";
+  }, [dark]);
+
+
   // Stan komponentu
   const [weapons, setWeapons] = useState([]);
   const [editId, setEditId] = useState(null);
@@ -82,6 +90,12 @@ export default function WeaponList() {
   return (
     <div>
       <h2>Lista broni</h2>
+
+      {/* przycisk obsługi ciemnego trybu */}
+      <p><button onClick={() => setDark(prev => !prev)}>
+      {dark ? "☀️ Jasny" : "🌙 Ciemny"}
+      </button></p>
+
 
       {/* Filtry */}
       <div style={{ marginBottom: "15px" }}>
