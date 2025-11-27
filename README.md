@@ -144,8 +144,11 @@ demo = [
             Weapon(name="Bazooka M1", category="Granatnik", year=1942, caliber="60mm", description="Amerykański granatnik przeciwpancerny.")
         ]
 ```
-W powyższym kodzie zgodnie z przykładami można stworzyć własne demo, które będzie dodawane do bazy podczas, gdy będzie ona pusta ( baza startowa ).
-   np. Weapon(name="x", category="y", year=xxxx, caliber="z", description="text")
+
+W powyższym kodzie zgodnie z przykładami można stworzyć własne demo, które będzie dodawane do bazy podczas, gdy będzie ona pusta ( baza startowa ). np.: 
+```bash
+Weapon(name="x", category="y", year=xxxx, caliber="z", description="text")
+```
 
 ## Porty poszczególnych rzeczy w aplikacji
 
