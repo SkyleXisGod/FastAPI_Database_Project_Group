@@ -55,7 +55,7 @@ pip install -r requirements.txt
 4. Zainicjalizuj bazę i wypełnij przykładowymi danymi:
 
 ```bash
-python -m backend.app.seed
+python -m app.seed
 # lub
 python backend/app/seed.py
 ```
@@ -63,7 +63,7 @@ python backend/app/seed.py
 5. Uruchom serwer FastAPI:
 
 ```bash
-uvicorn backend.app.main:app --reload --port 8000
+uvicorn app.main:app --reload --port 8000
 ```
 
 API dostępne pod: `http://localhost:8000`
@@ -127,6 +127,10 @@ Seed zawiera przykładowe bronie:
 * Amerykańskie: M1 Garand, Thompson M1928, M1911, Bazooka M1
 * Polskie: Vis wz. 35, RKM wz. 28
 
+`http://127.0.0.1:8000/weapons` -> tabela w bazie, wyświetla zawartość
+`http://localhost:8000` -> baza
+`http://localhost:8000/docs` -> FastAPI CRUD
+`http://localhost:3000` -> główna strona SZBD
 ---
 
 ## Autorzy / podział pracy
