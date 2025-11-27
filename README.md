@@ -2,7 +2,7 @@
 
 **Prosty projekt szkolny** – aplikacja do zarządzania bazą danych broni.
 Backend: FastAPI + SQLite + SQLAlchemy
-Frontend: React (prosty i przejrzysty dla ucznia)
+Frontend: React 
 
 ---
 
@@ -30,14 +30,7 @@ weapon-db-project/
 
 1. Przejdź do katalogu `backend/`
 
-2. (Opcjonalnie) utwórz i aktywuj wirtualne środowisko:
-
-   **Linux/macOS**
-
-   ```bash
-   python -m venv venv
-   source venv/bin/activate
-   ```
+2. Utwórz i aktywuj wirtualne środowisko:
 
    **Windows**
 
@@ -57,7 +50,7 @@ pip install -r requirements.txt
 ```bash
 python -m app.seed
 # lub
-python backend/app/seed.py
+python app/seed.py
 ```
 
 5. Uruchom serwer FastAPI:
@@ -148,4 +141,6 @@ Projekt wykonany wspólnie przez cztery osoby:
 | Maks Kocon        | Frontend: Dokumentacja, README, drobne poprawki UI, komentarze w kodzie, testowanie, FastAPI                  |
 | Dawid Brzeski     | Frontend: Zaawansowane sortowanie, filtrowanie po częściowych wartościach, edycja i usuwanie z listy          |
 
+Cały zespół pracował wmiarę równo, każdy dołożył coś od siebie, a przynajmniej to, co potrafił, a jeżeli nie potrafił czegoś zrobić, 
+to poradził sobie w inny sposób. 
 ---
