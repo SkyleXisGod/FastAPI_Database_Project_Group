@@ -35,7 +35,7 @@ def get_db():
 # endpoint główny
 @app.get("/")
 def root():
-    return {"msg": "Weapon DB API"}
+    return {"msg": "Baza danych bronii z okresu WW2 -> dodaj /weapons po porcie 8000, by ujrzeć zawartość tabeli!"}
 
 # lista wszystkich broni
 @app.get("/weapons")

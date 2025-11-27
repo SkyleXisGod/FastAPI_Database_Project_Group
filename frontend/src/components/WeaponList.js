@@ -14,7 +14,7 @@ export default function WeaponList() {
   // Filtry
   const [filterCategory, setFilterCategory] = useState("");
   const [filterCaliber, setFilterCaliber] = useState("");
-  const [filterName, setFilterName] = useState("");   // NOWOŚĆ: filtr po nazwie
+  const [filterName, setFilterName] = useState("");   
 
   // Ładowanie danych
   useEffect(() => { loadWeapons(); }, []);
