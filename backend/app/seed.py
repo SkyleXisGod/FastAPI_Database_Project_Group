@@ -3,15 +3,15 @@ from .models import Weapon
 
 # tworzenie tabel i wypełnienie przykładowymi danymi
 def create_and_seed():
-    # utworzyć tabele w bazie, jeśli jeszcze nie istnieją
+    # utworzenie tabel w bazie, jeśli jeszcze nie istnieją
     Base.metadata.create_all(bind=engine)
 
-    # utworzyć sesję do bazy danych
+    # utworzenie sesji do bazy danych
     db = SessionLocal()
 
-    # sprawdzić, czy w tabeli broni są jakieś rekordy
+    # sprawdzenie, czy w tabeli broni są jakieś rekordy
     if db.query(Weapon).count() == 0:
-        # dodać przykładowe bronie
+        # dodanie przykładowych bronii
         demo = [
             Weapon(name="Karabin Mauser 98k", category="Karabin", year=1935, caliber="7.92mm", description="Niemiecki standardowy karabin piechoty."),
             Weapon(name="MP40", category="Pistolet maszynowy", year=1940, caliber="9mm", description="Niemiecki pistolet maszynowy, popularny w Wehrmachcie."),
@@ -35,13 +35,13 @@ def create_and_seed():
             Weapon(name="Bazooka M1", category="Granatnik", year=1942, caliber="60mm", description="Amerykański granatnik przeciwpancerny.")
         ]
 
-        # zapisać w bazie wszystkie nowe rekordy
+        # zapisanie w bazie wszystkich nowych rekordów
         db.add_all(demo)
         db.commit()
 
-    # zamknąć sesję z bazą
+    # zamknięcie sesji z bazą
     db.close()
 
-# umożliwić uruchomienie pliku samodzielnie
+# umożliwienie uruchomienia pliku samodzielnie
 if __name__ == "__main__":
     create_and_seed()

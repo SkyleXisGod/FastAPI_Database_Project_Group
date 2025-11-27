@@ -128,8 +128,11 @@ Seed zawiera przykładowe bronie:
 * Polskie: Vis wz. 35, RKM wz. 28
 
 `http://127.0.0.1:8000/weapons` -> tabela w bazie, wyświetla zawartość
+
 `http://localhost:8000` -> baza
+
 `http://localhost:8000/docs` -> FastAPI CRUD
+
 `http://localhost:3000` -> główna strona SZBD
 ---
 
