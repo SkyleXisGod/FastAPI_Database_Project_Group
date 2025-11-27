@@ -1,0 +1,7 @@
+/node_modules
+/frontend/build
+/backend/venv
+*.pyc
+__pycache__/
+.weapons.db
+.env

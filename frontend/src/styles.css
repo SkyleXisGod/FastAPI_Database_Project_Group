@@ -1,0 +1,10 @@
+.container { max-width: 900px; margin: 0 auto; padding: 1rem; font-family: sans-serif; }
+.weapon-list { list-style: none; padding: 0; }
+.weapon-item { padding: .6rem; border-bottom: 1px solid #ddd; }
+.weapon-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: .5rem; margin-bottom: 1rem; }
+.weapon-form input { padding: .4rem; }
+.weapon-form button { grid-column: 1 / -1; padding: .6rem; }
+@media (max-width: 600px) {
+  .container { padding: .6rem; }
+  .weapon-form { grid-template-columns: 1fr; }
+}
