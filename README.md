@@ -134,6 +134,7 @@ Seed zawiera przykładowe bronie:
 `http://localhost:8000/docs` -> FastAPI CRUD
 
 `http://localhost:3000` -> główna strona SZBD
+
 ---
 
 ## Autorzy / podział pracy
