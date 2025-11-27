@@ -32,12 +32,12 @@ weapon-db-project/
 
 2. Utwórz i aktywuj wirtualne środowisko:
 
-   **Windows**
+**Windows**
 
-   ```bash
-   python -m venv venv
-   venv\Scripts\activate
-   ```
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
 
 3. Zainstaluj zależności:
 

@@ -118,6 +118,7 @@ export default function WeaponList() {
         />
       </div>
 
+      {/* lista broni z nagłówkami i przyciskami funkcyjnymi ( sortowanie ) */}
       {weapons.length === 0 ? <p>Brak wpisów.</p> : (
         <ul className="weapon-list">
           <li className="weapon-item">
@@ -129,6 +130,7 @@ export default function WeaponList() {
             <strong>&nbsp;Akcje</strong>
           </li>
 
+          {/* wyświetlanie listy z/bez efektów przycisków funkcyjnych */}
           {sortedWeapons.map(w => (
             <li key={w.id} className="weapon-item">
               {editId === w.id ? (
